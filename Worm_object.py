@@ -1,14 +1,4 @@
-from random import random, randint
-
-import pygame
-
-SCREEN_SIZE = 800, 600
-WHITE = (255, 255, 255)
-SEGMENT_RADIUS = 3
-
-
-class Worm:
-
+class WormObject:
     def __init__(self):
         self.segments = {
             '1': [400, 0],
@@ -25,11 +15,7 @@ class Worm:
             '5': 10,
         }
 
-        print(self.segments)
-        pygame.init()
-        self.clock = pygame.time.Clock()
-        self.screen = pygame.display.set_mode(SCREEN_SIZE)
-        self.screen.fill((0, 0, 0))
+
 
     def wiggle_segment(self):
         for key in self.segments:
@@ -40,18 +26,7 @@ class Worm:
             if self.segments[key][0] < 300:
                 self.segments_speed[key] = 10
 
+
     def draw_segment(self):
         for key in self.segments:
             pygame.draw.circle(self.screen, WHITE, self.segments[key], SEGMENT_RADIUS, SEGMENT_RADIUS)
-
-    def run(self):
-        while 1:
-            self.clock.tick(25)
-            self.screen.fill((0, 0, 0))
-            self.wiggle_segment()
-            self.draw_segment()
-            pygame.display.flip()
-
-
-if __name__ == '__main__':
-    Worm().run()
