@@ -1,17 +1,17 @@
 class BasicObject:
     def __init__(self, x, y, speed_x, speed_y):
-        self._pos_x = x
-        self._pos_y = y
+        self._x = x
+        self._y = y
         self._speed_x = speed_x
         self._speed_y = speed_y
 
     @property
-    def pos_x(self):
-        return self._pos_x
+    def x(self):
+        return self._x
 
     @property
-    def pos_y(self):
-        return self._pos_y
+    def y(self):
+        return self._y
 
     @property
     def speed_x(self):
@@ -21,12 +21,12 @@ class BasicObject:
     def speed_y(self):
         return self._speed_y
 
-    @pos_x.setter
-    def pos_x(self, value):
+    @x.setter
+    def x(self, value):
         pass
 
-    @pos_y.setter
-    def pos_y(self, value):
+    @y.setter
+    def y(self, value):
         pass
 
     @speed_x.setter
@@ -38,8 +38,8 @@ class BasicObject:
         pass
 
     def update(self):
-        self.pos_x += self.speed_x
-        self.pos_y += self.speed_y
+        self._x += self.speed_x
+        self._y += self.speed_y
 
-    def draw(self):
+    def draw(self, surface):
         pass

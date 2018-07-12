@@ -1,6 +1,6 @@
 import pygame
 import config
-from basic_object import BasicObject
+from objects.worm import Worm
 
 
 class WormSimulator:
@@ -9,13 +9,18 @@ class WormSimulator:
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode((config.screen_width, config.screen_height))
         self.screen.fill((0, 0, 0))
-        obj = BasicObject(10, 20, 30, 40)
-        print(obj.__dict__)
+
+        self.objects = []
+        worm = Worm(400, 500, 0, 0)
+        worm.speed_y = -1
+        self.objects.append(worm)
 
     def run(self):
         while 1:
             self.clock.tick(25)
             self.screen.fill((0, 0, 0))
+            for game_object in self.objects:
+                game_object.draw(self.screen)
             pygame.display.flip()
 
 
