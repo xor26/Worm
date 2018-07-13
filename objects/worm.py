@@ -6,7 +6,6 @@ from objects.worm_segment import WormSegment
 
 class Worm(BasicObject):
     def __init__(self, x, y, speed_x, speed_y,):
-        super().__init__(x, y, speed_x, speed_y)
         self._head = WormHead(x, y, 0)
         self._segments = []
         y_offset = 10
@@ -16,21 +15,21 @@ class Worm(BasicObject):
             self._segments.append(segment)
             y_offset += 10
             oscillation_direction *= -1
-
-    def get_segments(self):
-        return self._segments
+        super().__init__(x, y, speed_x, speed_y)
 
     @BasicObject.speed_x.setter
     def speed_x(self, value):
         self._speed_x = value
+        self._head.speed_x = value
         for segment in self._segments:
-            segment._speed_x = value
+            segment.speed_x = value
 
     @BasicObject.speed_y.setter
     def speed_y(self, value):
         self._speed_y = value
+        self._head.speed_y = value #EROR! HEAD DOESNT MOVE!
         for segment in self._segments:
-            segment._speed_y = value
+            segment.speed_y = value
 
     def draw(self, surface):
         self._head.draw(surface)

@@ -30,8 +30,8 @@ class WormSegment(BasicObject):
         self._oscillation_offset += self._oscillation_speed
         if abs(self._oscillation_offset) >= 10:
             self._oscillation_speed *= -1
-        self._x += self.speed_x+int(oscillation_pojection_on_x)
-        self._y += self.speed_y+int(oscillation_pojection_on_y)
+        self._x += self._speed_x+int(oscillation_pojection_on_x)
+        self._y += self._speed_y+int(oscillation_pojection_on_y)
 
     def draw(self, surface):
         pygame.draw.circle(surface, (0, 255, 255), (self.x, self.y), self._radius)

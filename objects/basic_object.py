@@ -9,37 +9,37 @@ class BasicObject:
     def x(self):
         return self._x
 
+    @x.setter
+    def x(self, value):
+        self._x = value
+
     @property
     def y(self):
         return self._y
+
+    @y.setter
+    def y(self, value):
+        self._y = value
 
     @property
     def speed_x(self):
         return self._speed_x
 
+    @speed_x.setter
+    def speed_x(self, value):
+        self._speed_x = value
+
     @property
     def speed_y(self):
         return self._speed_y
 
-    @x.setter
-    def x(self, value):
-        pass
-
-    @y.setter
-    def y(self, value):
-        pass
-
-    @speed_x.setter
-    def speed_x(self, value):
-        pass
-
     @speed_y.setter
     def speed_y(self, value):
-        pass
+        self._speed_y = value
 
     def update(self):
-        self._x += self.speed_x
-        self._y += self.speed_y
+        self._x += self._speed_x
+        self._y += self._speed_y
 
     def draw(self, surface):
         pass

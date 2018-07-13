@@ -9,5 +9,7 @@ class WormHead(BasicObject):
         self._angle = angle
 
     def draw(self, surface):
-        pass
-        # pygame.draw.rect(surface,  (0, 255, 255), (self.x+5, self.y+5, self.x-5, self.y-5), 10)
+        first_point = (self._x-10, self._y)
+        second_point = (self._x+10, self._y)
+        third_point = (self._x, self._y-10)
+        pygame.draw.polygon(surface, (0, 255, 255), (first_point, second_point, third_point), 5)
