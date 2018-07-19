@@ -11,8 +11,7 @@ class WormSimulator:
         self.screen.fill((0, 0, 0))
 
         self.objects = []
-        worm = Worm(400, 500, 0, 0)
-        worm.speed_y = -1
+        worm = Worm()
         self.objects.append(worm)
 
     def run(self):
@@ -21,6 +20,7 @@ class WormSimulator:
             self.screen.fill((0, 0, 0))
             for game_object in self.objects:
                 game_object.draw(self.screen)
+
             pygame.display.flip()
 
 

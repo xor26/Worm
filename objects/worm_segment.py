@@ -25,14 +25,29 @@ class WormSegment(BasicObject):
         self._oscillation_plane_angle = value
 
     def update(self):
-        oscillation_pojection_on_x = cos(self._oscillation_plane_angle)*self._oscillation_speed
-        oscillation_pojection_on_y = sin(self._oscillation_plane_angle)*self._oscillation_speed
+        """
+        Думаю достаточно просто последовательно применять все векторы скорости
+        действующие на сегмент к его кординате.
+        !Скорость колебаний должна вычислятся с учетом скорости червя
+        """
+        oscillation_projection_on_x = cos(self._oscillation_plane_angle)*self._oscillation_speed
+        oscillation_projection_on_y = sin(self._oscillation_plane_angle)*self._oscillation_speed
         self._oscillation_offset += self._oscillation_speed
         if abs(self._oscillation_offset) >= 10:
             self._oscillation_speed *= -1
-        self._x += self._speed_x+int(oscillation_pojection_on_x)
-        self._y += self._speed_y+int(oscillation_pojection_on_y)
+        self._x += self._speed_x+int(oscillation_projection_on_x)
+        self._y += self._speed_y+int(oscillation_projection_on_y)
 
     def draw(self, surface):
-        pygame.draw.circle(surface, (0, 255, 255), (self.x, self.y), self._radius)
+        pygame.draw.circle(surface, config.color_aqua, (self.x, self.y), self._radius)
+
+    @property
+    def left_border(self):
+        """!!angle dependence!!"""
+        return [self.x - self._radius, self.y]
+
+    @property
+    def right_border(self):
+        """!!angle dependence!!"""
+        return [self.x + self._radius, self.y]
 

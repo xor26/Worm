@@ -1,9 +1,9 @@
 class BasicObject:
     def __init__(self, x, y, speed_x, speed_y):
-        self._x = x
-        self._y = y
-        self._speed_x = speed_x
-        self._speed_y = speed_y
+        self.x = x
+        self.y = y
+        self.speed_x = speed_x
+        self.speed_y = speed_y
 
     @property
     def x(self):
@@ -37,9 +37,18 @@ class BasicObject:
     def speed_y(self, value):
         self._speed_y = value
 
+    @property
+    def left_border(self):
+        return [self.x, self.y]
+
+    @property
+    def right_border(self):
+        return [self.x, self.y]
+
     def update(self):
         self._x += self._speed_x
         self._y += self._speed_y
 
     def draw(self, surface):
         pass
+
